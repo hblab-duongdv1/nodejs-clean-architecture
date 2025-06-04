@@ -1,0 +1,67 @@
+@startuml Clean Architecture
+
+' Styling
+skinparam componentStyle rectangle
+skinparam backgroundColor white
+skinparam handwritten false
+
+' Layers
+package "Domain Layer" {
+    [User Entity] as User
+    [Product Entity] as Product
+    [Order Entity] as Order
+    [OrderItem Entity] as OrderItem
+    [UserRepository Interface] as UserRepo
+    [ProductRepository Interface] as ProductRepo
+    [OrderRepository Interface] as OrderRepo
+}
+
+package "Application Layer" {
+    [UserUseCases] as UserUC
+    [ProductUseCases] as ProductUC
+    [OrderUseCases] as OrderUC
+}
+
+package "Infrastructure Layer" {
+    [MySQL User Repository] as MySQLUserRepo
+    [MySQL Product Repository] as MySQLProductRepo
+    [MySQL Order Repository] as MySQLOrderRepo
+    [TypeORM Config] as TypeORM
+    [Database Connection] as DBConn
+}
+
+package "Presentation Layer" {
+    [UserController] as UserCtrl
+    [ProductController] as ProductCtrl
+    [OrderController] as OrderCtrl
+    [Express Router] as Router
+}
+
+' Relationships
+UserRepo <|.. MySQLUserRepo
+ProductRepo <|.. MySQLProductRepo
+OrderRepo <|.. MySQLOrderRepo
+
+UserUC --> UserRepo
+ProductUC --> ProductRepo
+OrderUC --> OrderRepo
+
+UserCtrl --> UserUC
+ProductCtrl --> ProductUC
+OrderCtrl --> OrderUC
+
+Router --> UserCtrl
+Router --> ProductCtrl
+Router --> OrderCtrl
+
+MySQLUserRepo --> TypeORM
+MySQLProductRepo --> TypeORM
+MySQLOrderRepo --> TypeORM
+TypeORM --> DBConn
+
+' Entity Relationships
+User "1" -- "0..*" Order : has
+Order "1" -- "1..*" OrderItem : contains
+Product "1" -- "0..*" OrderItem : referenced in
+
+@enduml 
