@@ -1,7 +1,7 @@
 import { Repository } from "typeorm";
 import { User } from "../../domain/entities/User";
 import { IUserRepository } from "../../domain/repositories/IUserRepository";
-import { AppDataSource } from "../database/data-source";
+import { AppDataSource } from "../../database/data-source";
 
 export class UserRepository implements IUserRepository {
   private repository: Repository<User>;
@@ -38,4 +38,4 @@ export class UserRepository implements IUserRepository {
   async findAll(): Promise<User[]> {
     return this.repository.find();
   }
-} 
+}

@@ -1,7 +1,7 @@
 import { Repository } from "typeorm";
 import { Product } from "../../domain/entities/Product";
 import { IProductRepository } from "../../domain/repositories/IProductRepository";
-import { AppDataSource } from "../database/data-source";
+import { AppDataSource } from "../../database/data-source";
 
 export class ProductRepository implements IProductRepository {
   private repository: Repository<Product>;
@@ -35,4 +35,4 @@ export class ProductRepository implements IProductRepository {
   async findAll(): Promise<Product[]> {
     return this.repository.find();
   }
-} 
+}

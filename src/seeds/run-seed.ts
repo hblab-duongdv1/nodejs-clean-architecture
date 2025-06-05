@@ -1,5 +1,5 @@
 import { Seed } from "./index";
-import { AppDataSource } from "../infrastructure/database/data-source";
+import { AppDataSource } from "../database/data-source";
 
 async function runSeeds() {
     try {
@@ -10,7 +10,7 @@ async function runSeeds() {
         console.log("\nStarting seed process...");
         await Seed.run(AppDataSource);
         console.log("\nSeed process completed successfully");
-        
+
         process.exit(0);
     } catch (error) {
         console.error("\nError during seed execution:", error);

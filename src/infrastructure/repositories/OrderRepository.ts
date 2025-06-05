@@ -1,7 +1,7 @@
 import { Repository } from "typeorm";
 import { Order, OrderStatus } from "../../domain/entities/Order";
 import { IOrderRepository } from "../../domain/repositories/IOrderRepository";
-import { AppDataSource } from "../database/data-source";
+import { AppDataSource } from "../../database/data-source";
 
 export class OrderRepository implements IOrderRepository {
   private repository: Repository<Order>;
@@ -55,4 +55,4 @@ export class OrderRepository implements IOrderRepository {
       relations: ['user', 'items']
     });
   }
-} 
+}

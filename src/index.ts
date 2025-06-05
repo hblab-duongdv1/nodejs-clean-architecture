@@ -3,10 +3,10 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import swaggerUi from 'swagger-ui-express';
-import { AppDataSource } from './infrastructure/database/data-source';
+import { AppDataSource } from './database/data-source';
 import userRoutes from './infrastructure/routes/user.routes';
 import orderRoutes from './infrastructure/routes/order.routes';
-import { swaggerSpec } from './infrastructure/config/swagger';
+import { swaggerSpec } from '../docs/swagger';
 import * as dotenv from 'dotenv';
 
 dotenv.config();

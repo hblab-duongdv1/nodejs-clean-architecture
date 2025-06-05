@@ -8,9 +8,9 @@
     "build": "tsc",
     "test": "jest",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
-    "migration": "typeorm-ts-node-commonjs migration:run -d src/infrastructure/database/data-source.ts",
+    "migration": "typeorm-ts-node-commonjs migration:run -d src/database/data-source.ts",
     "seed": "ts-node src/seeds/run-seed.ts",
-    "migration:revert": "typeorm-ts-node-commonjs migration:revert -d src/infrastructure/database/data-source.ts"
+    "migration:revert": "typeorm-ts-node-commonjs migration:revert -d src/database/data-source.ts"
   },
   "dependencies": {
     "@types/swagger-jsdoc": "^6.0.4",
