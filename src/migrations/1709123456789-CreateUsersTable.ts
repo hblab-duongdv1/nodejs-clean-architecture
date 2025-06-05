@@ -13,6 +13,7 @@ export class CreateUsersTable1709123456789 implements MigrationInterface {
                 PRIMARY KEY (id)
             )
         `);
+        // Orders table is created in a separate migration, but if you want to add a foreign key from orders to users, do it in the orders migration.
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {

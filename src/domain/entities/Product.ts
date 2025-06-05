@@ -21,9 +21,9 @@ export class Product {
   @OneToMany(() => OrderItem, orderItem => orderItem.product)
   orderItems: OrderItem[];
 
-  @CreateDateColumn()
+  @CreateDateColumn({ name: "created_at" })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ name: "updated_at" })
   updatedAt: Date;
 } 

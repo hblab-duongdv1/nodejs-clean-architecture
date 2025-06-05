@@ -20,4 +20,4 @@ export class CreateUserUseCase {
 
     return this.userRepository.create(user);
   }
-} 
+}

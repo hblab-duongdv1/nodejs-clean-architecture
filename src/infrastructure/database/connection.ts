@@ -1,4 +1,4 @@
-import { AppDataSource } from "./config/typeorm.config";
+import AppDataSource from "./config/typeorm.config";
 
 export const initializeDatabase = async () => {
   try {

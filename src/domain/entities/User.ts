@@ -18,9 +18,9 @@ export class User {
   @OneToMany(() => Order, order => order.user)
   orders: Order[];
 
-  @CreateDateColumn()
+  @CreateDateColumn({ name: "created_at" })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ name: "updated_at" })
   updatedAt: Date;
 } 

@@ -1,21 +1,21 @@
 import { DataSource } from "typeorm";
 import { User } from "../../../domain/entities/User";
-import { Product } from "../../../domain/entities/Product";
 import { Order, OrderItem } from "../../../domain/entities/Order";
-import { config } from "dotenv";
+import { Product } from "../../../domain/entities/Product";
+import * as dotenv from 'dotenv';
 
-config();
+dotenv.config();
 
-export const AppDataSource = new DataSource({
+export default new DataSource({
   type: "mysql",
-  host: process.env.DB_HOST || "localhost",
+  host: process.env.DB_HOST,
   port: parseInt(process.env.DB_PORT || "3306"),
-  username: process.env.DB_USERNAME || "root",
-  password: process.env.DB_PASSWORD || "",
-  database: process.env.DB_DATABASE || "clean_architecture_db",
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
   synchronize: false,
-  logging: process.env.NODE_ENV === "development",
-  entities: [User, Product, Order, OrderItem],
+  logging: process.env.DB_LOGGING === "true",
+  entities: [User, Order, OrderItem, Product],
   migrations: ["src/infrastructure/database/migrations/*.ts"],
   subscribers: [],
 });

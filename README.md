@@ -26,6 +26,19 @@ src/
 
 ## Installation
 
+## Docker Compose
+
+```bash
+# Remove exist
+docker-compose down -v
+
+# Build
+docker-compose build
+
+# Start
+docker-compose up -d
+```
+
 1. Clone the repository:
 ```bash
 git clone <repository-url>
@@ -59,6 +72,11 @@ CREATE DATABASE clean_architecture_db;
 
 Development mode:
 ```bash
+# Option
+npm run migration
+npm run seed
+
+# Finally
 npm run dev
 ```
 
@@ -111,15 +129,9 @@ npm start
   Available statuses: "pending", "processing", "completed", "cancelled"
 
 ## Database Migrations
-
-Generate a migration:
-```bash
-npm run migration:generate
-```
-
 Run migrations:
 ```bash
-npm run migration:run
+npm run migration
 ```
 
 Revert last migration:
